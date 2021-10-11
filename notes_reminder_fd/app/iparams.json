@@ -1,0 +1,45 @@
+{
+    "emailServiceDomain": {
+        "display_name": "Email service Domain",
+        "description": "Please enter the domain",
+        "type": "text",
+        "required": true
+    },
+    "emailServiceApiKey": {
+        "display_name": "Email service auth",
+        "description": "Please enter the secret",
+        "type": "text",
+        "required": true,
+        "secure": true
+    },
+    "fdDomain": {
+        "display_name": "Freshdesk domain",
+        "description": "Please enter the domain",
+        "type": "text",
+        "required": true
+    },
+    "fdApiKey": {
+        "display_name": "Freshdesk auth",
+        "description": "Please enter the api key",
+        "type": "text",
+        "required": true,
+        "secure": true
+    },
+    "fromEmail": {
+        "display_name": "From email",
+        "description": "Please enter the from email",
+        "type": "email",
+        "required": false
+    },
+    "replyEmail": {
+        "display_name": "Reply email",
+        "description": "Please enter the reply email",
+        "type": "email",
+        "required": false
+    },
+    "dpDomain": {
+        "display_name": "Developer platform domain",
+        "description": "Please enter the developer platform domain",
+        "type": "text"
+    }
+}

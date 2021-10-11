@@ -1,0 +1,397 @@
+<html>
+
+<head>
+    <script
+        src="https://static.freshdev.io/fdk/2.0/assets/fresh_client.js"></script>
+    <link rel="stylesheet" type="text/css"
+        href="https://static.freshdev.io/fdk/2.0/assets/freshdesk.css">
+    <style>
+        .input-section {
+            margin-top: 10px;
+        }
+
+        .domain-name-field {
+            width: 450px;
+        }
+
+        .api-key-field {
+            width: 438px;
+        }
+
+        .form-actions {
+            margin-top: 10px;
+            margin-right: 10px;
+            margin-bottom: 30px;
+            float: right;
+        }
+
+        .field-tip {
+            color: grey;
+        }
+
+        .hide-element {
+            display: none;
+        }
+
+        .validation {
+            color: red;
+        }
+
+        #danger-message {
+            display: none;
+        }
+
+        #success-message {
+            display: none;
+        }
+
+        .mb-20 {
+            margin-bottom: 20px !important;
+        }
+
+        .ml-30 {
+            margin-left: 30px !important;
+        }
+
+        .pt-10 {
+            padding-top: 10px;
+        }
+
+        .row {
+            margin-left: 0px;
+            margin-right: 0px;
+        }
+
+        #email_settings select {
+            width: 250px;
+        }
+
+        #email_settings h6 {
+            font-size: 12px;
+            margin-bottom: 35px;
+            margin-top: 15px;
+        }
+
+        label {
+            font-size: 12px;
+            margin-bottom: 5px;
+        }
+
+        h4 {
+            font-weight: 400;
+        }
+
+        h5 {
+            padding-top: 10px;
+            font-weight: 600;
+        }
+
+        hr {
+            margin-top: 25px;
+            border-top: 1px solid #dadfe3;
+        }
+
+        .input-group-addon {
+            position: relative;
+            left: -25px;
+            line-height: 0.75;
+        }
+
+        #iparams_authenticate {
+            outline: none !important;
+            background-color: #02a468;
+            border: 1px #03a86b solid;
+        }
+
+        #auth_fields input[type=text]:focus+.input-group-addon {
+            border-color: #02b875;
+            outline: none !important;
+        }
+
+        .btn-dark-grey {
+            background: #24364a;
+            border: #24364a;
+        }
+
+        .btn-dark-grey:hover {
+            background: #24364a;
+            border: #24364a;
+            color: #fff;
+        }
+
+        select {
+            font-size: 12px;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="ml-30">
+        <div class="alert alert-danger" id="danger-message">
+        </div>
+        <div class="alert alert-success" id="success-message">
+        </div>
+        <div id="auth_fields">
+            <h5>Auth settings</h5>
+            <div class="input-section domain-name-field">
+                <label> Enter your Freshdesk domain</label>
+                <div class="input-group">
+                    <input id="fdDomain" type="text">
+                    <span class="input-group-addon"></span>
+                </div>
+            </div>
+            <div class="input-section api-key-field">
+                <label> Enter your Freshdesk's admin API Key</label>
+                <input value="" id="fdApiKey" type="text">
+                <span class="field-tip">
+                    <i class="icon-question"></i>
+                    you can find the API key under profile settings
+                </span>
+            </div>
+            <hr>
+            <div class="form-actions">
+                <button class="btn btn-dark-grey"
+                    id="iparams_authenticate">Authenticate</button>
+            </div>
+        </div>
+        <div id="email_settings" class="mb-20">
+            <h6>
+                <a href='#' id="showAuthSettings">Auth settings </a> -> Email Settings
+            </h6>
+            <h5> Email settings (to be filled by admin)</h5>
+            <div class="row mb-20 pt-10">
+                <label class="col-lg-6 col-md-6 col-sm-6 col-xs-6">From email address for sending notification:</label>
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                    <select id="fromEmail">
+                        <option value="">Default app email</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row mb-20 pt-10">
+                <label class="col-lg-6 col-md-6 col-sm-6 col-xs-6">Reply email address for sending notification:</label>
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                    <select id="replyEmail">
+                        <option value="">Default app email</option>
+                    </select>
+                </div>
+            </div>
+            <hr/>
+            <h5>Developer platform account details</h5>
+            <div class="input-section domain-name-field">
+                <label> Enter Developer platform domain</label>
+                <div class="input-group">
+                    <input id="dpDomain" type="text">
+                    <span class="input-group-addon"></span>
+                </div>
+            </div>
+            <div class="input-section domain-name-field">
+                <label> Enter Developer platform account ID</label>
+                <div class="input-group">
+                    <input id="dpAccountId" type="text">
+                    <span class="input-group-addon"></span>
+                </div>
+            </div>
+            <div class="input-section domain-name-field">
+                <label> Enter Developer platform url</label>
+                <div class="input-group">
+                    <input id="dpUrl" type="text">
+                    <span class="input-group-addon"></span>
+                </div>
+            </div>
+            <div class="input-section domain-name-field">
+                <label> Enter Developer platform secret</label>
+                <div class="input-group">
+                    <input id="dpSecret" type="text">
+                    <span class="input-group-addon"></span>
+                </div>
+            </div>
+            <div class="input-section domain-name-field">
+                <label> Enter Developer platform product key</label>
+                <div class="input-group">
+                    <input id="dpAuth" type="text">
+                    <span class="input-group-addon"></span>
+                </div>
+            </div>
+             <div class="input-section domain-name-field">
+                <label> Enter App id</label>
+                <div class="input-group">
+                    <input id="extId" type="text">
+                    <span class="input-group-addon"></span>
+                </div>
+            </div>
+             <div class="input-section domain-name-field">
+                <label> Enter App version id</label>
+                <div class="input-group">
+                    <input id="versionId" type="text">
+                    <span class="input-group-addon"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    var _this = this;
+    var authFormFields = ["fdDomain", "fdApiKey"];
+    var emailFields = ["dpUrl","dpAuth","dpSecret","dpDomain", "extId", "versionId", "fromEmail", "replyEmail", "dpAccountId"];
+    var isFdAuthenticated = false,
+        emailFieldsDone = false;
+
+    document.getElementById("email_settings").style.display = "none";
+
+    function getConfigs(savedConfigs) {
+        if (savedConfigs) {
+            authFormFields.forEach(function (key) {
+                document.getElementById(`${key}`).value = savedConfigs[key];
+            });
+            _this.showEmailFields(savedConfigs);
+        }
+    }
+
+    function postConfigs() {
+        var config = {};
+        authFormFields.forEach(function (key) {
+            config[key] = document.getElementById(`${key}`).value;
+        });
+
+        emailFields.forEach(function (key) {
+            config[key] = document.getElementById(`${key}`).value;
+        });
+        return config;
+    }
+
+    function authFormValidation() {
+        var isValid = true;
+        authFormFields.forEach(function (field) {
+            if (!document.getElementById(`${field}`).value) {
+                isValid = false;
+            }
+        });
+        return isValid;
+    }
+
+    function validate() {
+        var isValid = false;
+        if (isFdAuthenticated && emailFieldsDone) {
+            isValid = true;
+        }
+        return isValid;
+    }
+
+    document.getElementById("showAuthSettings").addEventListener("click", function () {
+        isFdAuthenticated = false;
+        _this.showAuthSettings();
+    });
+
+    document.getElementById("iparams_authenticate").addEventListener("click", function () {
+        document.getElementById("iparams_authenticate").style.color = '#fff';
+        var isValid = _this.authFormValidation();
+        
+        if (isValid) {
+            _this.showEmailFields();
+        } else {
+            showError('Please fill the "Domain Name" and "API key" for freshdesk');
+        }
+    });
+
+    function showEmailFields(savedConfigs) {
+        fetchFDEmailConfigs().then(
+            function (data) {
+                isFdAuthenticated = true;
+                _this.populateEmailConfigs(data);
+                _this.showEmailSettings();
+                if (savedConfigs) {
+                    emailFields.forEach(function (key) {
+                        document.getElementById(`${key}`).value = savedConfigs[key];
+                    });
+                }
+            },
+            function (error) {
+                console.log(error);
+                isFdAuthenticated = false;
+                showError('Could not verify api key. Please check domain name and API key for Freshdesk.');
+            }
+        )
+    }
+
+    function fetchFDEmailConfigs() {
+        var fd_domain = document.getElementById('fdDomain').value
+        var fd_api_key = document.getElementById('fdApiKey').value
+
+        var fd_base_url = "https://" + fd_domain + ".freshpo.com";
+
+        var fdUrl = fd_base_url + '/api/v2/email_configs';
+        var fdHeaders = {
+            "Authorization": "Basic " + btoa(fd_api_key + ':x'),
+            "Content-Type": "application/json",
+            "Accept": "application/json"
+        };
+        var fdOptions = {
+            headers: fdHeaders
+        };
+
+        return client.request.get(fdUrl, fdOptions);
+    }
+
+    function clearEmailConfigs() {
+        var fromEmailElement = document.getElementById("fromEmail");
+        var replyEmailElement = document.getElementById("replyEmail");
+
+        for(var i =1; i<fromEmailElement.length; i++) {
+            fromEmailElement.remove(i);
+        }
+        for(var i =1; i<replyEmailElement.length; i++) {
+            replyEmailElement.remove(i);
+        }
+    }
+
+    function populateEmailConfigs(emailConfigs) {
+        clearEmailConfigs();
+        var configs = JSON.parse(emailConfigs.response);
+
+        var fromEmailElement = document.getElementById("fromEmail");
+        var replyEmailElement = document.getElementById("replyEmail");
+
+        configs.forEach(function(config) {
+            var toEmail = document.createElement('option');
+            toEmail.value = config.to_email;
+            toEmail.text = config.to_email;
+
+            fromEmailElement.appendChild(toEmail);
+
+            var replyEmail = document.createElement('option');
+            replyEmail.value = config.reply_email;
+            replyEmail.text = config.reply_email;
+
+            replyEmailElement.appendChild(replyEmail);
+        })
+    }
+
+    function showAuthSettings() {
+        document.getElementById("auth_fields").style.display = "block";
+        document.getElementById("email_settings").style.display = "none";
+        emailFieldsDone = false;
+    }
+
+    function showEmailSettings() {
+        document.getElementById("auth_fields").style.display = "none";
+        document.getElementById("email_settings").style.display = "block";
+        emailFieldsDone = true;
+    }
+
+    function showError(msg) {
+        document.getElementById('danger-message').style.display = 'block';
+        document.getElementById('danger-message').innerHTML = msg;
+        document.body.scrollTop = 0; // For Safari
+        document.documentElement.scrollTop = 0;
+        setTimeout(function (param) {
+            document.getElementById('danger-message').style.display = 'none';
+        }, 3000);
+    }
+
+    app.initialized().then(function (client) {
+        window.client = client;
+    });
+</script>
+
+</html>

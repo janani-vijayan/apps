@@ -1,0 +1,25 @@
+{
+  "platform-version": "2.0",
+  "product": {
+    "freshdesk": {
+      "location": {
+        "ticket_sidebar": {
+          "url": "template.html",
+          "icon": "icon.svg"
+        }
+      }
+    }
+  },
+  "engines": {
+    "node": "12.18.2",
+    "fdk": "7.0.1"
+  },
+  "whitelisted-domains": [
+    "https://<%= iparam.fdDomain %>.freshpo.com"
+  ],
+  "dependencies": {
+    "crypto-js": "4.1.1",
+    "request": "2.72.0",
+    "jsonwebtoken": "8.4.0"
+  }
+}
